@@ -1,8 +1,14 @@
-# Climate Temperature Prediction App 🌡️
+#  🌡️ Climate Change Impact Assessment and Prediction System – Nepal
 
-## ✅ Completed the project, hosted it, and submitted.  
-This Streamlit app predicts average maximum temperatures using environmental and socio-economic data.  
-**Project details are listed here, including the hosted link.**
+## 📘 Project Overview
+
+This project is a Streamlit-based web app for analyzing climate and socio-economic data to predict average maximum temperature in Nepal. It covers:
+
+- Exploratory Data Analysis (EDA)
+- Feature Engineering
+- ML Model Training & Evaluation
+- Climate Prediction Interface
+- NLP Sentiment Analysis of climate-related text
 
 🔗 **Live App Link**: [Streamlit Deployment](https://capstone-project-shaharbind-qxpkfhsijth5lezamrs4pz.streamlit.app/Home)
 
