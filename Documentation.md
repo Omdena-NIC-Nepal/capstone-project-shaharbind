@@ -1,6 +1,5 @@
 
-
-```markdown
+---
 # 🌡️ Climate Change Impact Assessment and Prediction System – Nepal
 
 ## 📑 Table of Contents
@@ -40,8 +39,9 @@ This project is a Streamlit-based web app for analyzing climate and socio-econom
 
 1. Clone the project:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/capstone-project-shaharbind.git
+   git clone https://github.com/Omdena-NIC-Nepal/capstone-project-shaharbind
    cd capstone-project-shaharbind
+   
    ```
 
 2. Install all required libraries:
@@ -100,8 +100,6 @@ capstone-project-shaharbind/
 └── Documentation.md           # This documentation file
 ```
 
----
-
 ## 🧵 Final Note
 
 - Keep your models, data, and code organized.
@@ -109,4 +107,3 @@ capstone-project-shaharbind/
 - Push to GitHub using `git add .`, `git commit -m "msg"`, `git push`
 
 🎉 **Project complete and documented!**
-```
