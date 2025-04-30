@@ -1,36 +1,49 @@
+# data_utils.py
+
 import pandas as pd
-import joblib
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-import spacy
+import streamlit as st
+import os
 
-# Load a small English NLP model
-nlp = spacy.load("en_core_web_sm")
+@st.cache_data  # Efficient caching of results across reruns (Streamlit v1.14.0+)
+def load_combined_data():
+    """
+    Load the preprocessed combined dataset.
+    Returns:
+        pd.DataFrame: Processed climate + socio-economic dataset.
+    """
+    data_path = './data/processed_data/combined_data.csv'
+    
+    if not os.path.exists(data_path):
+        st.error("❌ Processed data file not found. Please run data_preprocessing.ipynb first.")
+        return pd.DataFrame()
+    
+    df = pd.read_csv(data_path)
+    return df
 
-def load_dataset():
-    """Loads the dataset used throughout the app."""
-    return pd.read_csv("data/cleaned_climate_data.csv")
+@st.cache_data
+def load_sentiment_data():
+    """
+    Load positive and negative sentiment data for NLP tasks.
+    Returns:
+        (pd.DataFrame, pd.DataFrame): positive and negative sentiment datasets.
+    """
+    pos_path = './data/sentiment_data/positive.csv'
+    neg_path = './data/sentiment_data/negative.csv'
 
-def preprocess_features(data, test_ratio=0.2):
-    X = data.drop(columns=["avg_max_temp", "year"])
-    y = data["avg_max_temp"]
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_ratio, random_state=42)
-    scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train)
-    X_test_scaled = scaler.transform(X_test)
-    return X_train_scaled, X_test_scaled, y_train, y_test, scaler
+    try:
+        pos_df = pd.read_csv(pos_path)
+        neg_df = pd.read_csv(neg_path)
+        return pos_df, neg_df
+    except Exception as e:
+        st.warning(f"⚠️ Failed to load sentiment data: {e}")
+        return pd.DataFrame(), pd.DataFrame()
 
-def save_trained_model(model, name):
-    joblib.dump(model, f"models/{name}.pkl")
-
-def load_trained_model(name):
-    return joblib.load(f"models/{name}.pkl")
-
-def analyze_input_text(text):
-    doc = nlp(text)
-    return {
-        "tokens": [token.text for token in doc],
-        "pos_tags": [token.pos_ for token in doc],
-        "lemmas": [token.lemma_ for token in doc],
-        "entities": [(ent.text, ent.label_) for ent in doc.ents]
-    }
+def save_combined_data(data, file_path='./data/processed_data/combined_data.csv'):
+    """
+    Save the processed data to a CSV file.
+    Args:
+        data (pd.DataFrame): Data to save
+        file_path (str): Path where data will be saved (default is './data/processed_data/combined_data.csv')
+    """
+    data.to_csv(file_path, index=False)
+    st.success(f"Data saved to {file_path}")
