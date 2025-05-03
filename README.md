@@ -10,7 +10,7 @@ This project is a Streamlit-based web app for analyzing climate and socio-econom
 - Climate Prediction Interface
 - NLP Sentiment Analysis of climate-related text
 
-🔗 **Live App Link**: [Streamlit Deployment](https://capstone-project-shaharbind-qxpkfhsijth5lezamrs4pz.streamlit.app/Home)
+🔗 **Live App Link**: [Streamlit Deployment](https://capstone-project-shaharbind-qxpkfhsijth5lezamrs4pz.streamlit.app/)
 
 👨‍💻 **Developed by**: Arbind Shah  
 📅 Omdena Academy Capstone Project – 2025
